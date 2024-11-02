@@ -9,25 +9,25 @@ func main() {
 	inputLayer := internal.Layer{
 		Name:    "Input Layer",
 		Neurons: 5,
-		Neuron:  internal.InputNeuron{},
+		Neuron:  &internal.InputNeuron{},
 	}
 
 	hiddenLayer1 := internal.Layer{
 		Name:    "Hidden Layer 1",
 		Neurons: 16,
-		Neuron:  internal.ReLUNeuron{},
+		Neuron:  &internal.ReLUNeuron{},
 	}
 
 	hiddenLayer2 := internal.Layer{
 		Name:    "Hidden Layer 2",
 		Neurons: 16,
-		Neuron:  internal.ReLUNeuron{},
+		Neuron:  &internal.ReLUNeuron{},
 	}
 
 	outputLayer := internal.Layer{
 		Name:    "Output Layer",
 		Neurons: 10,
-		Neuron:  internal.ReLUNeuron{},
+		Neuron:  &internal.ReLUNeuron{},
 	}
 
 	inputLayer.GenerateNeurons()

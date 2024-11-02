@@ -1,10 +1,13 @@
 package internal
 
+import "math/rand"
+
 type Neuron interface {
 	Calculate(axons []Axon) float64
 	GetActivation() float64
 	Create() Neuron
 	GetID() uint64
+	RandomizeBias()
 }
 
 var IDCounter uint64 = 0
@@ -23,6 +26,10 @@ func (n BaseNeuron) GetActivation() float64 {
 	return n.Activation
 }
 
+func (n *BaseNeuron) RandomizeBias() {
+	n.Bias = rand.Float64()*2 - 1
+}
+
 // INPUT NEURON
 //
 
@@ -36,7 +43,8 @@ func (n InputNeuron) Calculate(axons []Axon) float64 {
 
 func (n InputNeuron) Create() Neuron {
 	IDCounter++
-	return InputNeuron{BaseNeuron{ID: IDCounter}}
+	neuron := InputNeuron{BaseNeuron{ID: IDCounter}}
+	return &neuron
 }
 
 // RELU NEURON
@@ -57,5 +65,6 @@ func (n ReLUNeuron) Calculate(axons []Axon) float64 {
 
 func (n ReLUNeuron) Create() Neuron {
 	IDCounter++
-	return ReLUNeuron{BaseNeuron{ID: IDCounter}}
+	neuron := ReLUNeuron{BaseNeuron{ID: IDCounter}}
+	return &neuron
 }

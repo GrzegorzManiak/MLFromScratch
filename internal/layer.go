@@ -18,6 +18,7 @@ func (l *Layer) GenerateNeurons() {
 	var i uint64
 	for i = 0; i < l.Neurons; i++ {
 		newNeuron := l.Neuron.Create()
+		newNeuron.RandomizeBias()
 		generatedNeurons = append(generatedNeurons, &newNeuron)
 	}
 
