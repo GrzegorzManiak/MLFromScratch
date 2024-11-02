@@ -24,6 +24,12 @@ func main() {
 		Neuron:  internal.ReLUNeuron{},
 	}
 
+	outputLayer := internal.Layer{
+		Name:    "Output Layer",
+		Neurons: 10,
+		Neuron:  internal.ReLUNeuron{},
+	}
+
 	inputLayer.GenerateNeurons()
 
 	hiddenLayer1.GenerateNeurons()
@@ -31,4 +37,7 @@ func main() {
 
 	hiddenLayer2.GenerateNeurons()
 	hiddenLayer1.BindTo(&hiddenLayer2)
+
+	outputLayer.GenerateNeurons()
+	hiddenLayer2.BindTo(&outputLayer)
 }
